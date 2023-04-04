@@ -1,0 +1,19 @@
+﻿@page "/sign-in-with-button"
+@using AuthenticationWithGoogle.Utilities;
+@using Microsoft.AspNetCore.Components.Authorization;
+@inject IJSRuntime JSRuntime
+@inject BlazorSchoolAuthenticationStateProvider BlazorSchoolAuthenticationStateProvider
+
+<button type="button" @onclick="SignInWithGoogleAsync">Sign In with Google</button>
+JWT: @Test
+
+@code {
+    public object Test { get; set; } = "";
+
+    public async Task SignInWithGoogleAsync()
+    {
+        var blazorSchoolAuthenticationStateProvider = DotNetObjectReference.Create<BlazorSchoolAuthenticationStateProvider>(BlazorSchoolAuthenticationStateProvider);
+        await JSRuntime.InvokeVoidAsync("blazorSchoolGoogleInitialize", "686658243135-3s5lnkgih8so1ckhbhrntuilp2vrf161.apps.googleusercontent.com", blazorSchoolAuthenticationStateProvider);
+        await JSRuntime.InvokeVoidAsync("google.accounts.id.prompt");
+    }
+}
