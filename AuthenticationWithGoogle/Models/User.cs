@@ -32,7 +32,7 @@ public class User
             return new()
             {
                 Username = jwtSecurityToken.Claims.First(c => c.Type == "name").Value,
-                Password = jwtSecurityToken.Claims.First(c => c.Type == "sub").Value
+                Password = ""
             };
         }
 

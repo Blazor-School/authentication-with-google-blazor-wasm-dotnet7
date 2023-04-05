@@ -13,5 +13,6 @@ builder.Services.AddScoped<AuthenticationDataMemoryStorage>();
 builder.Services.AddScoped<BlazorSchoolUserService>();
 builder.Services.AddScoped<BlazorSchoolAuthenticationStateProvider>();
 builder.Services.AddScoped<AuthenticationStateProvider>(sp => sp.GetRequiredService<BlazorSchoolAuthenticationStateProvider>());
+builder.Services.AddAuthorizationCore();
 
 await builder.Build().RunAsync();
