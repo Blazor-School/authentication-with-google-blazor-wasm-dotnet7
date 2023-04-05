@@ -12,9 +12,10 @@
     {
         var blazorSchoolAuthenticationStateProvider = DotNetObjectReference.Create<BlazorSchoolAuthenticationStateProvider>(BlazorSchoolAuthenticationStateProvider);
         await JSRuntime.InvokeVoidAsync("blazorSchoolGoogleInitialize", "686658243135-3s5lnkgih8so1ckhbhrntuilp2vrf161.apps.googleusercontent.com", blazorSchoolAuthenticationStateProvider);
-        //It will not work for some cases
+        //The following code might not work in some cases
         //await JSRuntime.InvokeVoidAsync("google.accounts.id.prompt");
-        //Display the reason of not working.
+        
+        //The following code will execute the prompt function and print the reason of not working to the console if fails.
         await JSRuntime.InvokeVoidAsync("blazorSchoolGooglePrompt");
     }
 }
